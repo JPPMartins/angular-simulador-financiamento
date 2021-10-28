@@ -1,0 +1,86 @@
+
+<div class="container main-container">
+  <div class="card">
+      <div class="card-body">
+        <h3>Simulador de financiamento</h3>
+      </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row form-group" style="padding: 15px;">
+        <div class="col-md-2">
+          <label>Valor da entrada:</label><br>
+          <input class="form-control" type="text" mask="separator.2" thousandSeparator="." placeholder="0,00" #valorEntrada  (change) = "calculaValorFinanciar(valorEntrada.value, valorTotal.value)">
+        </div>
+        <div class="col-md-2">
+          <label>Valor total:</label><br>
+          <input class="form-control" type="text" mask="separator.2" thousandSeparator="."  placeholder="0,00" #valorTotal (change) = "calculaValorFinanciar(valorEntrada.value, valorTotal.value)">
+        </div>
+        <div class="col-md-2">
+          <label>Tempo (Anos):</label><br>
+          <input class="form-control" #tempoAnos type="number"  placeholder="0" (change) = "calculaTempoMeses(tempoAnos.value)">
+        </div>
+        <div class="col-md-2">
+          <label>Taxa de juros ao ano (%):</label><br>
+          <input class="form-control" #taxaJurosAnos type="number"  placeholder="0,00" (change) = "calculaJurosMeses(taxaJurosAnos.value)">
+        </div>
+        <div class="col-md-2">
+          <label>Valor a ser financiado:</label><br>
+          <input class="form-control" type="text" value="{{valorFinanciar | mask: 'separator':'.2' }}" placeholder="0,00" disabled>
+        </div>
+        <div class="col-md-2">
+          <label>Tempo (Meses):</label><br>
+          <input class="form-control" type="number"  value={{tempoMeses}} placeholder="0" disabled>
+        </div>
+      </div>
+  
+      <div class="row form-group" style="padding: 15px;">
+        <div class="col-md-2">
+          <label>Taxa de juros ao mês (%):</label><br>
+          <input class="form-control" type="number" value="{{taxaJurosMeses}}" placeholder="0,00" disabled>
+        </div>
+        <div class="col-md-2">
+          <label>Amortização:</label><br>
+          <input class="form-control" type="text" value="{{amortizacao | currency : 'BRL'}}" placeholder="0,00" disabled>
+        </div>
+        <div class="col-md-3">
+          <label>Juros:</label><br>
+          <input class="form-control" type="text" value="{{juros | currency : 'BRL'}}" placeholder="0,00" disabled>
+        </div>
+        <div class="col-md-3">
+          <label>Valor primeira parcela:</label><br>
+          <input class="form-control" type="text" value="{{primeiraParcela | currency : 'BRL'}}" placeholder="0,00" disabled>
+        </div>
+        <div class="col-md-2"><br>
+          <button class="btn btn-primary btn-block " (click) = calculaTodasParcelas()>Calcular Parcelas</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nº</th>
+            <th scope="col">Saldo devedor</th>
+            <th scope="col">Amortização</th>
+            <th scope="col">Juros</th>
+            <th scope="col">Parcela</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let parcela of parcelas">
+            <td>{{ parcela.nparcela }}</td>
+            <td>{{ parcela.saldoDevedor | currency : 'BRL' }}</td>
+            <td>{{ parcela.amortizacao | currency : 'BRL' }}</td>
+            <td>{{ parcela.juros | currency : 'BRL' }}</td>
+            <td>{{ parcela.parcelaValor | currency : 'BRL' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
