@@ -72,7 +72,6 @@ export class AppComponent {
     let nParcela = 1;
 
     for(nParcela; nParcela <= this.tempoMeses; nParcela++){
-      //nParcela = nParcela + 1 ;
       saldoDevedor = saldoDevedor - this.amortizacao;
       juros = (saldoDevedor * this.taxaJurosMeses)/100
       parcela = this.amortizacao + juros;
