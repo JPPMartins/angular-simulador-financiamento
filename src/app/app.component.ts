@@ -66,6 +66,7 @@ export class AppComponent {
   }
 
   calculaTodasParcelas(){
+    this.parcelas = [];
     let saldoDevedor = this.valorFinanciar + this.amortizacao;
     let juros = this.juros;
     let parcela = this.primeiraParcela;

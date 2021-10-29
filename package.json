@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deployTeste": "ng build --outputHashing=none --base-href ",
+    "cleanCache": "node post-build.js"
   },
   "private": true,
   "dependencies": {

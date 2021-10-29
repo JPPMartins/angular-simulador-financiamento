@@ -10,11 +10,11 @@
       <div class="row form-group" style="padding: 15px;">
         <div class="col-md-2">
           <label>Valor da entrada:</label><br>
-          <input class="form-control" type="text" mask="separator.2" thousandSeparator="." placeholder="0,00" #valorEntrada  (change) = "calculaValorFinanciar(valorEntrada.value, valorTotal.value)">
+          <input class="form-control" type="text" placeholder="0,00" #valorEntrada  (change) = "calculaValorFinanciar(valorEntrada.value, valorTotal.value)">
         </div>
         <div class="col-md-2">
           <label>Valor total:</label><br>
-          <input class="form-control" type="text" mask="separator.2" thousandSeparator="."  placeholder="0,00" #valorTotal (change) = "calculaValorFinanciar(valorEntrada.value, valorTotal.value)">
+          <input class="form-control" type="text"  placeholder="0,00" #valorTotal (change) = "calculaValorFinanciar(valorEntrada.value, valorTotal.value)">
         </div>
         <div class="col-md-2">
           <label>Tempo (Anos):</label><br>
@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-2">
           <label>Valor a ser financiado:</label><br>
-          <input class="form-control" type="text" value="{{valorFinanciar | mask: 'separator':'.2' }}" placeholder="0,00" disabled>
+          <input class="form-control" type="text" value="{{valorFinanciar | currency : 'BRL'}}" placeholder="0,00" disabled>
         </div>
         <div class="col-md-2">
           <label>Tempo (Meses):</label><br>
